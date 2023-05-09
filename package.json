@@ -9,7 +9,11 @@
     "test": "jest",
     "build": "tsc -p .",
     "start": "nodemon",
-    "lint": "npm run lint:js "
+    "lint": "npm run lint:js ",
+    "seed:config": "npm run build && ts-node ./node_modules/typeorm-seeding/dist/cli.js config --configName ./src/config/ormconfig.ts",
+    "seed:run": "npm run build && ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --configName ./src/config/ormconfig.ts",
+    "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop --config ./src/config/ormconfig.ts",
+    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync --config ./src/config/ormconfig.ts"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
@@ -18,6 +22,7 @@
     "express": "^4.18.2",
     "joi": "^17.9.2",
     "morgan": "^1.10.0",
+    "pg": "^8.10.0",
     "typeorm": "^0.2.45",
     "typeorm-seeding": "^1.6.1",
     "winston": "^3.8.2"
